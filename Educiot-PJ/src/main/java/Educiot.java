@@ -1,4 +1,8 @@
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.stream.JsonReader;
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.Scanner;
 
 public class Educiot {
@@ -15,7 +19,11 @@ public class Educiot {
         System.out.print(">");
         String userPassword = input.nextLine();
 
-        login.educiotLogin(userId,md5.pwdToMD5(userPassword));
+        String returnJson = login.educiotLogin(userId,md5.pwdToMD5(userPassword));
+//        System.out.println(returnJson);
+        JsonObject json = new Gson().fromJson(returnJson,JsonObject.class);
+        String fdToken = json.get("token").getAsString();
+        System.out.println("已获取到FDtoken(" + fdToken + ")");
 
     }
 

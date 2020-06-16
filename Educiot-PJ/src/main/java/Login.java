@@ -8,10 +8,12 @@ import java.net.URLConnection;
 
 public class Login {
 
-    public static void educiotLogin(String userId,String pwd) throws IOException {
+    public static String educiotLogin(String userId, String pwd) throws IOException {
 
         //接口地址
         final String spec = "http://educiot.com:32070/user/login";
+
+        String str = "";
 
         URL url = new URL(spec);
         URLConnection connection = url.openConnection();
@@ -33,7 +35,7 @@ public class Login {
             outputStreamWriter.write("account=" + userId + "&client=1&code=0&pwd=" + pwd + "&version=2.3.4");
             outputStreamWriter.flush();
         }
-        //如果HTTP状态码返回200,则输出获取到的信息
+        //如果HTTP状态码返回200,则输出获取到的数据
         if (httpURLConnection.getResponseCode() == 200) {
             try (BufferedReader reader = new BufferedReader(
                     new InputStreamReader(
@@ -44,8 +46,10 @@ public class Login {
                     resultBuffer.append(tempLine);
                 }
 
-                System.out.println(resultBuffer.toString());
+                str = resultBuffer.toString();
+
             }
         }
+        return str;
     }
 }
