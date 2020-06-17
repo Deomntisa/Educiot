@@ -1,3 +1,5 @@
+package interfaces;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import java.io.BufferedReader;
@@ -54,8 +56,7 @@ public class Login {
         }
         //直接返回FDtoken
         JsonObject loginJson = new Gson().fromJson(str,JsonObject.class);
-        String fdToken = loginJson.get("token").getAsString();
-        return fdToken;
+        return loginJson.get("token").getAsString();
     }
 
 }
