@@ -14,6 +14,7 @@ public class Educiot {
         GetRelationId getRelationId = new GetRelationId();
         PJUserList pjUserList = new PJUserList();
         GetUserRid getUserRid = new GetUserRid();
+        GetPJMsgJson pjMsgJson = new GetPJMsgJson();
 
         Scanner input = new Scanner(System.in);
 
@@ -34,8 +35,12 @@ public class Educiot {
         System.out.println("已获取到最新评教列表relationid(" + relationid + ")");
 
         //获取rid
-        String userListJson = pjUserList.pjUserList(fdLoginReturnJson,relationid);
+        String userListJson = pjUserList.pjUserList(fdLoginReturnJson, relationid);
         System.out.println("已获取到所有评教用户的rid " + Arrays.toString(getUserRid.GetAllUserRid(userListJson)));
+
+        //获取评教信息
+        String pjJson = pjMsgJson.getPJJson(fdLoginReturnJson,getUserRid.GetAllUserRid(userListJson),relationid);
+        System.out.println(pjJson);
 
     }
 
