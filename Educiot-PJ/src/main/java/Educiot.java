@@ -1,17 +1,18 @@
-import interfaces.EduciotPJList;
-import interfaces.GetRelationId;
-import interfaces.Login;
-import interfaces.MD5;
+import interfaces.*;
+
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Educiot {
 
     public static void main(String[] args) throws IOException {
+
         Login login = new Login();
         MD5 md5 = new MD5();
         EduciotPJList pjList = new EduciotPJList();
         GetRelationId getRelationId = new GetRelationId();
+        PJUserList pjUserList = new PJUserList();
+        GetUserRid getUserRid = new GetUserRid();
 
         Scanner input = new Scanner(System.in);
 
@@ -28,6 +29,11 @@ public class Educiot {
         //relationid
         String relationid = getRelationId.GetNewRelationId(EduciotPJList.educiotPJList(fdLoginReturnJson));
         System.out.println("已获取到最新评教列表relationid(" + relationid + ")");
+
+        //rid
+        String userListJson = pjUserList.pjUserList(fdLoginReturnJson,relationid);
+        System.out.println(userListJson);
+        getUserRid.GetAllUserRid(userListJson);
 
 
     }
