@@ -1,10 +1,7 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import interfaces.EduciotPJList;
+import interfaces.GetRelationId;
 import interfaces.Login;
 import interfaces.MD5;
-
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -14,6 +11,7 @@ public class Educiot {
         Login login = new Login();
         MD5 md5 = new MD5();
         EduciotPJList pjList = new EduciotPJList();
+        GetRelationId getRelationId = new GetRelationId();
 
         Scanner input = new Scanner(System.in);
 
@@ -29,10 +27,9 @@ public class Educiot {
         System.out.println("已获取到FDtoken(" + fdLoginReturnJson + ")");
 
         String fdEduciotPJListReturnJson = EduciotPJList.educiotPJList(fdLoginReturnJson);
-        System.out.println(fdEduciotPJListReturnJson);
-        JsonObject educiotPJJson = new Gson().fromJson(fdEduciotPJListReturnJson,JsonObject.class);
-        JsonArray relationId = educiotPJJson.getAsJsonArray("data");
-        System.out.println(fdEduciotPJListReturnJson);
+
+        System.out.println("已获取到最新评教信息relationid(" + getRelationId.GetNewRelationId(fdEduciotPJListReturnJson) + ")");
+
 
     }
 
