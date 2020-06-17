@@ -21,14 +21,13 @@ public class Educiot {
         System.out.println("请输入密码：");
         System.out.print(">");
         String userPassword = input.nextLine();
-        //
+        //FDtoken
         String fdLoginReturnJson = Login.educiotLogin(userId, MD5.pwdToMD5(userPassword));
-
         System.out.println("已获取到FDtoken(" + fdLoginReturnJson + ")");
 
-        String fdEduciotPJListReturnJson = EduciotPJList.educiotPJList(fdLoginReturnJson);
-
-        System.out.println("已获取到最新评教信息relationid(" + getRelationId.GetNewRelationId(fdEduciotPJListReturnJson) + ")");
+        //relationid
+        String rid = getRelationId.GetNewRelationId(EduciotPJList.educiotPJList(fdLoginReturnJson));
+        System.out.println("已获取到最新评教列表relationid(" + rid + ")");
 
 
     }
