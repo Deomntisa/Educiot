@@ -26,8 +26,8 @@ public class Educiot {
         System.out.println("已获取到FDtoken(" + fdLoginReturnJson + ")");
 
         //relationid
-        String rid = getRelationId.GetNewRelationId(EduciotPJList.educiotPJList(fdLoginReturnJson));
-        System.out.println("已获取到最新评教列表relationid(" + rid + ")");
+        String relationid = getRelationId.GetNewRelationId(EduciotPJList.educiotPJList(fdLoginReturnJson));
+        System.out.println("已获取到最新评教列表relationid(" + relationid + ")");
 
 
     }
