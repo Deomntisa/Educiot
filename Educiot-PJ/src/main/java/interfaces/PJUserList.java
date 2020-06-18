@@ -1,5 +1,7 @@
 package interfaces;
 
+import org.apache.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,6 +11,9 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class PJUserList {
+
+    private static Logger log = Logger.getLogger(PJUserList.class);
+
     public static String pjUserList(String fdtoken, String relationid) throws IOException {
 
         //接口地址
@@ -20,6 +25,7 @@ public class PJUserList {
         URLConnection connection = url.openConnection();
         HttpURLConnection httpURLConnection = (HttpURLConnection) connection;
 
+        log.warn("正在设置HTTP请求头");
         //设置请求头
         httpURLConnection.setRequestProperty("Accept-Encoding", "gzip, deflate");
         httpURLConnection.setRequestProperty("Connection", "close");
@@ -37,8 +43,13 @@ public class PJUserList {
             outputStreamWriter.write("tid=" + relationid);
             outputStreamWriter.flush();
         }
+        log.warn("正在获取评教成员");
+
         //如果HTTP状态码返回200,则输出获取到的数据
         if (httpURLConnection.getResponseCode() == 200) {
+
+            log.warn("已获取带评教成员");
+
             try (BufferedReader reader = new BufferedReader(
                     new InputStreamReader(
                             httpURLConnection.getInputStream()))) {
@@ -51,6 +62,8 @@ public class PJUserList {
                 str = resultBuffer.toString();
 
             }
+        }else {
+            log.warn("获取失败");
         }
         return str;
     }

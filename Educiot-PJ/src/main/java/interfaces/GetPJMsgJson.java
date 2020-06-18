@@ -1,5 +1,7 @@
 package interfaces;
 
+import org.apache.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,6 +11,8 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class GetPJMsgJson {
+
+    private static Logger log = Logger.getLogger(GetPJMsgJson.class);
 
     public static String getPJJson(String fdtoken, String[] rid, String tid) throws IOException {
 
@@ -21,6 +25,7 @@ public class GetPJMsgJson {
         URLConnection connection = url.openConnection();
         HttpURLConnection httpURLConnection = (HttpURLConnection) connection;
 
+        log.warn("正在设置HTTP请求头");
         //设置请求头
         httpURLConnection.setRequestProperty("Accept-Encoding", "gzip, deflate");
         httpURLConnection.setRequestProperty("Connection", "close");
@@ -33,6 +38,7 @@ public class GetPJMsgJson {
         httpURLConnection.setRequestProperty("FDtoken", fdtoken);
         httpURLConnection.setDoOutput(true);
 
+        log.warn("正在拼接所有用户rid");
         //拼接所有用户rid
         String newUserRid = "";
         for (int i = 0; i < rid.length; i++){
@@ -45,8 +51,8 @@ public class GetPJMsgJson {
                 newUserRid += rid[i];
             }
         }
-//        System.out.println(newUserRid);
 
+        log.warn("正在获取评教信息JSON");
         try (OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
                 httpURLConnection.getOutputStream())) {
             outputStreamWriter.write("ids=" + newUserRid + "&tid=" + tid);
@@ -67,6 +73,7 @@ public class GetPJMsgJson {
 
             }
         }
+        log.warn("已成功获取评教信息JSON");
         return str;
     }
 }

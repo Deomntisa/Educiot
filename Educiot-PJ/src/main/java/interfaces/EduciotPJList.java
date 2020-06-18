@@ -1,5 +1,7 @@
 package interfaces;
 
+import org.apache.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,6 +11,8 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class EduciotPJList {
+
+    private static Logger log = Logger.getLogger(EduciotPJList.class);
 
     public static String educiotPJList(String fdtoken) throws IOException {
 
@@ -21,6 +25,7 @@ public class EduciotPJList {
         URLConnection connection = url.openConnection();
         HttpURLConnection httpURLConnection = (HttpURLConnection) connection;
 
+        log.warn("正在设置HTTP请求头");
         //设置请求头
         httpURLConnection.setRequestProperty("Accept-Encoding", "gzip, deflate");
         httpURLConnection.setRequestProperty("Connection", "close");
@@ -38,6 +43,8 @@ public class EduciotPJList {
             outputStreamWriter.write("page=1&size=10");
             outputStreamWriter.flush();
         }
+
+        log.warn("正在获取评教列表");
         //如果HTTP状态码返回200,则输出获取到的数据
         if (httpURLConnection.getResponseCode() == 200) {
             try (BufferedReader reader = new BufferedReader(
@@ -53,6 +60,7 @@ public class EduciotPJList {
 
             }
         }
+        log.warn("已成功获取评教列表");
         return str;
     }
 }

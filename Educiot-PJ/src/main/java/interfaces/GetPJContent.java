@@ -10,9 +10,10 @@ import org.apache.log4j.Logger;
 
 public class GetPJContent {
 
+    private static Logger log = Logger.getLogger(GetPJContent.class);
+
     public String[] getPJContent(String pjJson){
 
-        Logger log = Logger.getLogger(GetPJContent.class);
 
         //获取JsonArray中的data数据
         log.warn("正在获取JsonArray中的data数据");

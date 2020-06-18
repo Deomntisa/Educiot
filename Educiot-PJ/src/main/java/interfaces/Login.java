@@ -2,6 +2,8 @@ package interfaces;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import org.apache.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,6 +13,8 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class Login {
+
+    private static Logger log = Logger.getLogger(Login.class);
 
     public static String educiotLogin(String userId, String pwd) throws IOException {
 
@@ -23,6 +27,7 @@ public class Login {
         URLConnection connection = url.openConnection();
         HttpURLConnection httpURLConnection = (HttpURLConnection) connection;
 
+        log.warn("正在设置HTTP请求头");
         //设置请求头
         httpURLConnection.setRequestProperty("Accept-Encoding", "gzip, deflate");
         httpURLConnection.setRequestProperty("Connection", "close");
@@ -39,8 +44,11 @@ public class Login {
             outputStreamWriter.write("account=" + userId + "&client=1&code=0&pwd=" + pwd + "&version=2.3.4");
             outputStreamWriter.flush();
         }
+        log.warn("正在登录");
+
         //如果HTTP状态码返回200,则输出获取到的数据
         if (httpURLConnection.getResponseCode() == 200) {
+            log.warn("登录成功");
             try (BufferedReader reader = new BufferedReader(
                     new InputStreamReader(
                             httpURLConnection.getInputStream()))) {
@@ -53,9 +61,13 @@ public class Login {
                 str = resultBuffer.toString();
 
             }
+
+        }else {
+            log.warn("登录失败");
         }
         //直接返回FDtoken
         JsonObject loginJson = new Gson().fromJson(str,JsonObject.class);
+
         return loginJson.get("token").getAsString();
     }
 
