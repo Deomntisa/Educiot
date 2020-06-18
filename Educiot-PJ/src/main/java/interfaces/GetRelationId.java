@@ -8,7 +8,7 @@ import net.sf.json.JSONObject;
 
 public class GetRelationId {
 
-    public String GetNewRelationId(String fdEduciotPJListReturnJson){
+    public String getNewRelationId(String fdEduciotPJListReturnJson){
         //获取JsonArray中的data数据
         JsonObject educiotPJJson = new Gson().fromJson(fdEduciotPJListReturnJson,JsonObject.class);
         JsonArray relationId = educiotPJJson.getAsJsonArray("data");
