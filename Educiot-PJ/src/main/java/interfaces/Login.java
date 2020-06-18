@@ -39,8 +39,7 @@ public class Login {
         httpURLConnection.setRequestProperty("Accept-Language", "zh-Hans-HK;q=1, en-HK;q=0.9");
         httpURLConnection.setDoOutput(true);
 
-        try (OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
-                httpURLConnection.getOutputStream())) {
+        try (OutputStreamWriter outputStreamWriter = new OutputStreamWriter(httpURLConnection.getOutputStream())) {
             outputStreamWriter.write("account=" + userId + "&client=1&code=0&pwd=" + pwd + "&version=2.3.4");
             outputStreamWriter.flush();
         }
