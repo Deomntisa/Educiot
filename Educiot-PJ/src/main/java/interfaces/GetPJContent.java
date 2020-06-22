@@ -25,12 +25,14 @@ public class GetPJContent {
         String newEduciotPJContentAsJsonArray = educiotPJContentAsJsonArray.toString();
 
         JSONArray json = JSONArray.fromObject(newEduciotPJContentAsJsonArray);
+
         log.warn("正在遍历评教内容");
         String[] educiotContent = new String[json.size()];
         for(int i=0; i<json.size(); i++){
             JSONObject name = json.getJSONObject(i);   // 遍历 jsonarray 数组，把每一个对象转成 json 对象
             educiotContent[i] =String.valueOf(name.get("name"));
         }
+
         log.warn("已成功遍历将评教内容");
         return educiotContent;
     }

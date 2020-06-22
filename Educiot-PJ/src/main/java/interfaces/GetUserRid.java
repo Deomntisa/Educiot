@@ -28,8 +28,8 @@ public class GetUserRid {
         log.warn("正在遍历用户rid");
 
         for(int i=0;i<json.size();i++){
+
             JSONObject rid = json.getJSONObject(i);   // 遍历 jsonarray 数组，把每一个对象转成 json 对象
-//            System.out.println(rid.get("rid"));   // 得到 relationid 每个对象中的属性值
             newRid[i] =String.valueOf(rid.get("rid"));
         }
 

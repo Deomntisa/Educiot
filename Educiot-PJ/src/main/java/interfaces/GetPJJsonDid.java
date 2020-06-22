@@ -11,42 +11,40 @@ public class GetPJJsonDid {
 
     private static Logger log = Logger.getLogger(GetPJContent.class);
 
-    public String[][] getPJDid(String pjJson){
+    public String[] getPJDid(String pjJson){
+/*
+     {
+      "data":{
+    "items":[
+      {
+        "itemstring":"手机",
+        "itemcoord":{"x":0,"y":100,"width":40,"height":20},
+      }
+    ],
+        "session_id":"",
+      },
+      "code":0,
+      "message":"OK"
+}*/
 
+        JSONObject jsonObject = JSONObject.fromObject(pjJson);
+        JSONObject data = jsonObject.getJSONObject("data");
+        JSONArray items = jsonObject.getJSONObject("data").getJSONArray("did");
+        JSONObject row = null;
 
-        //获取JsonArray中的data数据
-        log.warn("正在获取JsonArray中的data数据");
+        for(int i=0; i<items.size(); i++){
 
-        JsonObject educiotPJContent = new Gson().fromJson(pjJson,JsonObject.class);
-        JsonArray educiotPJContentAsJsonArray = educiotPJContent.getAsJsonArray("data");
-
-        //data
-        log.warn("已成功获取到data数据");
-        String newEduciotPJContentAsJsonArray = educiotPJContentAsJsonArray.toString();
-
-        JsonObject did = new Gson().fromJson(newEduciotPJContentAsJsonArray,JsonObject.class);
-
-        //did
-
-        JSONArray json = JSONArray.fromObject(newEduciotPJContentAsJsonArray);
-        JSONArray newDid = JSONArray.fromObject(did);
-
-
-
-
-        log.warn("正在遍历did");
-        String[][] educiotContent = new String[json.size()][newDid.size()];
-
-        for(int i = 0; i < json.size(); i++){
-            for (int j = 0; j < newDid.size(); j++){
-
-                JSONObject name = json.getJSONObject(i);   // 遍历 jsonarray 数组，把每一个对象转成 json 对象
-                JSONObject dId = newDid.getJSONObject(j);   // 遍历 jsonarray 数组，把每一个对象转成 json 对象
-                educiotContent[i][j] =String.valueOf(dId.get("did"));
-            }
-
+            row = items.getJSONObject(i);
+            System.out.println("itemstring ：" + row.get("itemstring"));
+            JSONObject itemcoord = row.getJSONObject("itemcoord");
+            System.out.println("x：" + itemcoord.get("x"));
+            System.out.println("y：" + itemcoord.get("y"));
+            System.out.println("width：" + itemcoord.get("width"));
+            System.out.println("height：" + itemcoord.get("height"));
         }
-        log.warn("已成功遍历将评教内容");
-        return educiotContent;
+        System.out.println("session_id：" + data.get("session_id"));
+        System.out.println("code：" + jsonObject.get("code"));
+        System.out.println("code：" + jsonObject.get("message"));
+
     }
 }
