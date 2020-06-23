@@ -21,6 +21,7 @@ public class Educiot {
         GetPJContent pjContent = new GetPJContent();
 
 
+
         Scanner input = new Scanner(System.in);
 
         //提示用户输入用户名和密码
@@ -48,7 +49,7 @@ public class Educiot {
         log.info("已获取到评教信息 " + pjJson);
         log.info("已获取到所有评教内容 " + Arrays.toString(pjContent.getPJContent(pjJson)));
 
-
+        new GetPJJsonDid().getPJDid(pjJson);
 
 
     }
