@@ -19,7 +19,7 @@ public class Educiot {
         GetUserRid getUserRid = new GetUserRid();
         GetPJMsgJson pjMsgJson = new GetPJMsgJson();
         GetPJContent pjContent = new GetPJContent();
-
+        GetPJJsonDid getPJJsonDid = new GetPJJsonDid();
 
 
         Scanner input = new Scanner(System.in);
@@ -49,7 +49,8 @@ public class Educiot {
         log.info("已获取到评教信息 " + pjJson);
         log.info("已获取到所有评教内容 " + Arrays.toString(pjContent.getPJContent(pjJson)));
 
-        new GetPJJsonDid().getPJDid(pjJson);
+        //获取评教最高分段did
+        getPJJsonDid.getPJDid(pjJson);
 
 
     }
