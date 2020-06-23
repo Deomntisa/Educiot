@@ -28,24 +28,27 @@ public class GetPJJsonDid {
 }*/
 
         JSONObject jsonObject = JSONObject.fromObject(pjJson);
-        JSONArray data = jsonObject.getJSONArray("data");
-        JSONObject newJsonObject = JSONObject.fromObject(data.toString());
-        System.out.println(newJsonObject.toString());
-        data = jsonObject.getJSONArray("data");
-
-//        JSONArray items = jsonObject.getJSONObject("data").getJSONArray("data");
+//        JSONObject data = jsonObject.getJSONObject("data");
+//        JSONArray json = jsonObject.getJSONObject("data").getJSONArray("data");
 //        JSONObject row = null;
-        JSONArray json = JSONArray.fromObject(data);
-        for(int i=0; i<json.size(); i++){
-//            JSONArray json = JSONArray.fromObject(data.getJSONObject(i));
-//            row = data.getJSONObject(i);
-            System.out.println("itemstring ：" + json.toString());
+//
+        log.warn(jsonObject.get("data"));
+
+        String dataStr = jsonObject.getString("data");
+
+        JSONObject abc = JSONObject.fromObject(dataStr);
+
+        log.warn(abc.size());
+//        https://blog.csdn.net/qq_34309663/article/details/80508125
+//        for(int i=0; i<json.size(); i++){
+//            row = json.getJSONObject(i);
+//            System.out.println("itemstring ：" + row.get("itemstring"));
 //            JSONObject itemcoord = row.getJSONObject("itemcoord");
 //            System.out.println("x：" + itemcoord.get("x"));
 //            System.out.println("y：" + itemcoord.get("y"));
 //            System.out.println("width：" + itemcoord.get("width"));
 //            System.out.println("height：" + itemcoord.get("height"));
-        }
+//        }
 //        System.out.println("session_id：" + data.get("session_id"));
 //        System.out.println("code：" + jsonObject.get("code"));
 //        System.out.println("code：" + jsonObject.get("message"));
