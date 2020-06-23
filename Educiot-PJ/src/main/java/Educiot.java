@@ -1,6 +1,8 @@
-import interfaces.*;
+import xyz.demontisa.*;
 
 import org.apache.log4j.Logger;
+import xyz.demontisa.*;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;

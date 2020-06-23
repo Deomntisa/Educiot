@@ -1,4 +1,4 @@
-package interfaces;
+package xyz.demontisa;
 
 import org.apache.log4j.Logger;
 
@@ -10,14 +10,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class EduciotPJList {
+public class PJUserList {
 
-    private static Logger log = Logger.getLogger(EduciotPJList.class);
+    private static Logger log = Logger.getLogger(PJUserList.class);
 
-    public static String educiotPJList(String fdtoken) throws IOException {
+    public static String pjUserList(String fdtoken, String relationid) throws IOException {
 
         //接口地址
-        final String spec = "http://educiot.com:32070/educiot/teacher/eva/notify/list";
+        final String spec = "http://educiot.com:32070/wxw/eva/studentevaluatelist";
 
         String str = "";
 
@@ -40,13 +40,16 @@ public class EduciotPJList {
 
         try (OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
                 httpURLConnection.getOutputStream())) {
-            outputStreamWriter.write("page=1&size=10");
+            outputStreamWriter.write("tid=" + relationid);
             outputStreamWriter.flush();
         }
+        log.warn("正在获取评教成员");
 
-        log.warn("正在获取评教列表");
         //如果HTTP状态码返回200,则输出获取到的数据
         if (httpURLConnection.getResponseCode() == 200) {
+
+            log.warn("已获取带评教成员");
+
             try (BufferedReader reader = new BufferedReader(
                     new InputStreamReader(
                             httpURLConnection.getInputStream()))) {
@@ -59,8 +62,9 @@ public class EduciotPJList {
                 str = resultBuffer.toString();
 
             }
+        }else {
+            log.warn("获取失败");
         }
-        log.warn("已成功获取评教列表");
         return str;
     }
 }

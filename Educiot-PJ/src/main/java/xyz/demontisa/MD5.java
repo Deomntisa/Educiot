@@ -1,4 +1,4 @@
-package interfaces;
+package xyz.demontisa;
 
 import org.apache.log4j.Logger;
 

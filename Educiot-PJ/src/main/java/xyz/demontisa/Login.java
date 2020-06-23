@@ -1,5 +1,7 @@
-package interfaces;
+package xyz.demontisa;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
@@ -10,14 +12,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class GetPJMsgJson {
+public class Login {
 
-    private static Logger log = Logger.getLogger(GetPJMsgJson.class);
+    private static Logger log = Logger.getLogger(Login.class);
 
-    public static String getPJJson(String fdtoken, String[] rid, String tid) throws IOException {
+    public static String educiotLogin(String userId, String pwd) throws IOException {
 
         //接口地址
-        final String spec = "http://educiot.com:32070/wxw/eva/tostudentevaluate";
+        final String spec = "http://educiot.com:32070/user/login";
 
         String str = "";
 
@@ -33,33 +35,19 @@ public class GetPJMsgJson {
         httpURLConnection.setRequestProperty("Accept", "*/*");
         httpURLConnection.setRequestProperty("Host", "educiot.com:32070");
         httpURLConnection.setRequestProperty("User-Agent", "yu lian wang/2.3.4 (iPhone; iOS 13.5; Scale/2.00)");
-        httpURLConnection.setRequestProperty("Content-Length", "14");
+        httpURLConnection.setRequestProperty("Content-Length", "93");
         httpURLConnection.setRequestProperty("Accept-Language", "zh-Hans-HK;q=1, en-HK;q=0.9");
-        httpURLConnection.setRequestProperty("FDtoken", fdtoken);
         httpURLConnection.setDoOutput(true);
 
-        log.warn("正在拼接所有用户rid");
-        //拼接所有用户rid
-        String newUserRid = "";
-        for (int i = 0; i < rid.length; i++){
-
-            if (i < rid.length - 1){
-
-                newUserRid += rid[i] + "%2C";
-            }else if (i < rid.length){
-
-                newUserRid += rid[i];
-            }
-        }
-
-        log.warn("正在获取评教信息JSON");
-        try (OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
-                httpURLConnection.getOutputStream())) {
-            outputStreamWriter.write("ids=" + newUserRid + "&tid=" + tid);
+        try (OutputStreamWriter outputStreamWriter = new OutputStreamWriter(httpURLConnection.getOutputStream())) {
+            outputStreamWriter.write("account=" + userId + "&client=1&code=0&pwd=" + pwd + "&version=2.3.4");
             outputStreamWriter.flush();
         }
+        log.warn("正在登录");
+
         //如果HTTP状态码返回200,则输出获取到的数据
         if (httpURLConnection.getResponseCode() == 200) {
+            log.warn("登录成功");
             try (BufferedReader reader = new BufferedReader(
                     new InputStreamReader(
                             httpURLConnection.getInputStream()))) {
@@ -72,8 +60,14 @@ public class GetPJMsgJson {
                 str = resultBuffer.toString();
 
             }
+
+        }else {
+            log.warn("登录失败");
         }
-        log.warn("已成功获取评教信息JSON");
-        return str;
+        //直接返回FDtoken
+        JsonObject loginJson = new Gson().fromJson(str,JsonObject.class);
+
+        return loginJson.get("token").getAsString();
     }
+
 }

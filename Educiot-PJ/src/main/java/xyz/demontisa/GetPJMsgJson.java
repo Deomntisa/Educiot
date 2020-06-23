@@ -1,4 +1,4 @@
-package interfaces;
+package xyz.demontisa;
 
 import org.apache.log4j.Logger;
 
@@ -10,14 +10,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class PJUserList {
+public class GetPJMsgJson {
 
-    private static Logger log = Logger.getLogger(PJUserList.class);
+    private static Logger log = Logger.getLogger(GetPJMsgJson.class);
 
-    public static String pjUserList(String fdtoken, String relationid) throws IOException {
+    public static String getPJJson(String fdtoken, String[] rid, String tid) throws IOException {
 
         //接口地址
-        final String spec = "http://educiot.com:32070/wxw/eva/studentevaluatelist";
+        final String spec = "http://educiot.com:32070/wxw/eva/tostudentevaluate";
 
         String str = "";
 
@@ -38,18 +38,28 @@ public class PJUserList {
         httpURLConnection.setRequestProperty("FDtoken", fdtoken);
         httpURLConnection.setDoOutput(true);
 
+        log.warn("正在拼接所有用户rid");
+        //拼接所有用户rid
+        String newUserRid = "";
+        for (int i = 0; i < rid.length; i++){
+
+            if (i < rid.length - 1){
+
+                newUserRid += rid[i] + "%2C";
+            }else if (i < rid.length){
+
+                newUserRid += rid[i];
+            }
+        }
+
+        log.warn("正在获取评教信息JSON");
         try (OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
                 httpURLConnection.getOutputStream())) {
-            outputStreamWriter.write("tid=" + relationid);
+            outputStreamWriter.write("ids=" + newUserRid + "&tid=" + tid);
             outputStreamWriter.flush();
         }
-        log.warn("正在获取评教成员");
-
         //如果HTTP状态码返回200,则输出获取到的数据
         if (httpURLConnection.getResponseCode() == 200) {
-
-            log.warn("已获取带评教成员");
-
             try (BufferedReader reader = new BufferedReader(
                     new InputStreamReader(
                             httpURLConnection.getInputStream()))) {
@@ -62,9 +72,8 @@ public class PJUserList {
                 str = resultBuffer.toString();
 
             }
-        }else {
-            log.warn("获取失败");
         }
+        log.warn("已成功获取评教信息JSON");
         return str;
     }
 }
