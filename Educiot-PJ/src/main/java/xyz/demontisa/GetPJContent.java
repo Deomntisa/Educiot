@@ -7,6 +7,8 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 
+import java.util.Arrays;
+
 
 public class GetPJContent {
 
@@ -33,7 +35,7 @@ public class GetPJContent {
             educiotContent[i] =String.valueOf(name.get("name"));
         }
 
-        log.warn("已成功遍历将评教内容");
+        log.info("已获取到所有评教内容 " + Arrays.toString(educiotContent));
         return educiotContent;
     }
 }

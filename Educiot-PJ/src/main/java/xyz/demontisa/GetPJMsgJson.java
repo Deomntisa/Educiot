@@ -73,7 +73,7 @@ public class GetPJMsgJson {
 
             }
         }
-        log.warn("已成功获取评教信息JSON");
+        log.warn("已成功获取评教信息JSON" + str);
         return str;
     }
 }

@@ -7,6 +7,8 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 
+import java.util.Arrays;
+
 public class GetUserRid {
 
     private static Logger log = Logger.getLogger(GetUserRid.class);
@@ -33,7 +35,7 @@ public class GetUserRid {
             newRid[i] =String.valueOf(rid.get("rid"));
         }
 
-        log.warn("已成功遍历用户rid");
+        log.info("已获取到所有评教用户的rid " + Arrays.toString(newRid));
         return newRid;
     }
 }

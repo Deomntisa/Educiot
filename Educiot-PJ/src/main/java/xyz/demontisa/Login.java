@@ -11,12 +11,24 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Scanner;
 
 public class Login {
 
     private static Logger log = Logger.getLogger(Login.class);
 
-    public static String educiotLogin(String userId, String pwd) throws IOException {
+    public static String educiotLogin() throws IOException {
+
+        Scanner input = new Scanner(System.in);
+
+        //提示用户输入用户名和密码
+        System.out.println("请输入用户名：");
+        System.out.print(">");
+        String userId = input.nextLine();
+        System.out.println("请输入密码：");
+        System.out.print(">");
+        String userPassword = input.nextLine();
+        String pwd = MD5.pwdToMD5(userPassword);
 
         //接口地址
         final String spec = "http://educiot.com:32070/user/login";
@@ -66,6 +78,8 @@ public class Login {
         }
         //直接返回FDtoken
         JsonObject loginJson = new Gson().fromJson(str,JsonObject.class);
+
+        log.warn("已获取到FDtoken " + loginJson.get("token").getAsString());
 
         return loginJson.get("token").getAsString();
     }

@@ -27,13 +27,12 @@ public class GetRelationId {
         log.warn("正在遍历relationid");
 
         for(int i=0;i<1;i++){
+
             JSONObject rid = json.getJSONObject(i);   // 遍历 jsonarray 数组，把每一个对象转成 json 对象
-//            System.out.println(rid.get("relationid"));   // 得到 relationid 每个对象中的属性值
             newRid =String.valueOf(rid.get("relationid"));
         }
 
-        log.warn("已成功遍历relationid");
-
+        log.info("已获取到最新评教列表relationid " + newRid);
         return newRid;
     }
 }

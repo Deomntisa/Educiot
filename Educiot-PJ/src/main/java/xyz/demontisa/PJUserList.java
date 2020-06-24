@@ -9,6 +9,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Arrays;
 
 public class PJUserList {
 
@@ -65,6 +66,7 @@ public class PJUserList {
         }else {
             log.warn("获取失败");
         }
+
         return str;
     }
 }
