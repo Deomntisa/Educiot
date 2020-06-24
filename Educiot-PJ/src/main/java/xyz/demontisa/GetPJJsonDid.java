@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class GetPJJsonDid {
 
-    private static Logger log = Logger.getLogger(GetPJContent.class);
+    private static final Logger log = Logger.getLogger(GetPJContent.class);
 
     public Long[] getPJDid(String pjJson){
 
@@ -76,7 +76,7 @@ public class GetPJJsonDid {
 
             log.warn("正在获取did");
 
-            Long array6 = array5.get("did").getAsLong();
+            long array6 = array5.get("did").getAsLong();
 
             log.warn("已成功获取第" + (i + 1) + "个项目最高分的did " + array6);
 

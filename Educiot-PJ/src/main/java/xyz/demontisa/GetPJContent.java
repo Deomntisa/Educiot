@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 public class GetPJContent {
 
-    private static Logger log = Logger.getLogger(GetPJContent.class);
+    private static final Logger log = Logger.getLogger(GetPJContent.class);
 
     public void getPJContent(String pjJson){
 

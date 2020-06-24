@@ -12,7 +12,7 @@ import java.net.URLConnection;
 
 public class EduciotPJList {
 
-    private static Logger log = Logger.getLogger(EduciotPJList.class);
+    private static final Logger log = Logger.getLogger(EduciotPJList.class);
 
     public static String educiotPJList(String fdtoken) throws IOException {
 

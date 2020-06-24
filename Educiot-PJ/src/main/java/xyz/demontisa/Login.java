@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 public class Login {
 
-    private static Logger log = Logger.getLogger(Login.class);
+    private static final Logger log = Logger.getLogger(Login.class);
 
     public static String educiotLogin() throws IOException {
 

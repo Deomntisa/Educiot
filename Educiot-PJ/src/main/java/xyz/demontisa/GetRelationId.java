@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 
 public class GetRelationId {
 
-    private static Logger log = Logger.getLogger(GetRelationId.class);
+    private static final Logger log = Logger.getLogger(GetRelationId.class);
 
     public String getNewRelationId(String fdEduciotPJListReturnJson){
 

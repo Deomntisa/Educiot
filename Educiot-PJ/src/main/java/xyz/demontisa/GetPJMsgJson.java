@@ -12,7 +12,7 @@ import java.net.URLConnection;
 
 public class GetPJMsgJson {
 
-    private static Logger log = Logger.getLogger(GetPJMsgJson.class);
+    private static final Logger log = Logger.getLogger(GetPJMsgJson.class);
 
     public static String getPJJson(String fdtoken, String[] rid, String tid) throws IOException {
 

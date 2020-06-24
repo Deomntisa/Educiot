@@ -5,8 +5,6 @@ import java.io.IOException;
 
 public class Educiot {
 
-    private static Logger log = Logger.getLogger(Educiot.class);
-
     public static void main(String[] args) throws IOException {
 
         GetRelationId getRelationId = new GetRelationId();

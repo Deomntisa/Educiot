@@ -9,11 +9,10 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Arrays;
 
 public class PJUserList {
 
-    private static Logger log = Logger.getLogger(PJUserList.class);
+    private static final Logger log = Logger.getLogger(PJUserList.class);
 
     public static String pjUserList(String fdtoken, String relationid) throws IOException {
 

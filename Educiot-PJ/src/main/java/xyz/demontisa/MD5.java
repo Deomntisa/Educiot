@@ -1,14 +1,13 @@
 package xyz.demontisa;
 
 import org.apache.log4j.Logger;
-
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class MD5 {
 
-    private static Logger log = Logger.getLogger(MD5.class);
+    private static final Logger log = Logger.getLogger(MD5.class);
 
     public static String pwdToMD5(String userPassword) {
 

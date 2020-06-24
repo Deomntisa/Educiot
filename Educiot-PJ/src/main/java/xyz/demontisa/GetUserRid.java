@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class GetUserRid {
 
-    private static Logger log = Logger.getLogger(GetUserRid.class);
+    private static final Logger log = Logger.getLogger(GetUserRid.class);
 
     public String[] GetAllUserRid(String userListJson){
 
