@@ -49,7 +49,7 @@ public class PJUserList {
         //如果HTTP状态码返回200,则输出获取到的数据
         if (httpURLConnection.getResponseCode() == 200) {
 
-            log.warn("已获取带评教成员");
+            log.warn("已获取到评教成员");
 
             try (BufferedReader reader = new BufferedReader(
                     new InputStreamReader(
