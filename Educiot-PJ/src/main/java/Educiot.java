@@ -26,6 +26,9 @@ public class Educiot {
         //获取评教信息
         String pjJson = GetPJMsgJson.getPJJson(fdLoginReturnJson,getUserRid.GetAllUserRid(userListJson),relationid);
 
+        //获取评教内容
+        new GetPJContent().getPJContent(pjJson);
+
         //获取评教最高分段did
         getPJJsonDid.getPJDid(pjJson);
 

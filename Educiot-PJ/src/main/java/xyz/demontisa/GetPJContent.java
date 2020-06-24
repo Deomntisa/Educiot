@@ -14,7 +14,7 @@ public class GetPJContent {
 
     private static Logger log = Logger.getLogger(GetPJContent.class);
 
-    public String[] getPJContent(String pjJson){
+    public void getPJContent(String pjJson){
 
 
         //获取JsonArray中的data数据
@@ -36,6 +36,5 @@ public class GetPJContent {
         }
 
         log.info("已获取到所有评教内容 " + Arrays.toString(educiotContent));
-        return educiotContent;
     }
 }
