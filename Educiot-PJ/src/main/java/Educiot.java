@@ -9,6 +9,7 @@ public class Educiot {
         GetRelationId getRelationId = new GetRelationId();
         GetUserRid getUserRid = new GetUserRid();
         GetPJJsonDid getPJJsonDid = new GetPJJsonDid();
+        EduciotPostData educiotPostData = new EduciotPostData();
 
 
         //获取FDtoken
@@ -28,6 +29,9 @@ public class Educiot {
 
         //获取评教最高分段did
         getPJJsonDid.getPJDid(pjJson);
+
+        //获取提交评教结果postData
+        educiotPostData.getPostData(getUserRid.GetAllUserRid(userListJson),getPJJsonDid.getPJDid(pjJson));
 
 
     }
