@@ -32,7 +32,7 @@ public class PJUserList {
         httpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
         httpURLConnection.setRequestProperty("Accept", "*/*");
         httpURLConnection.setRequestProperty("Host", "educiot.com:32070");
-        httpURLConnection.setRequestProperty("User-Agent", "yu lian wang/2.3.4 (iPhone; iOS 13.5; Scale/2.00)");
+        httpURLConnection.setRequestProperty("User-Agent", "yu lian wang/2.3.5 (iPhone; iOS 13.5; Scale/2.00)");
         httpURLConnection.setRequestProperty("Content-Length", "14");
         httpURLConnection.setRequestProperty("Accept-Language", "zh-Hans-HK;q=1, en-HK;q=0.9");
         httpURLConnection.setRequestProperty("FDtoken", fdtoken);
