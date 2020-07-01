@@ -11,7 +11,7 @@ public class SubmitPJData {
 
     private static final Logger log = Logger.getLogger(EduciotPJList.class);
 
-    public static String submit(String postData) throws IOException {
+    public static void submit(String postData) throws IOException {
 
         //接口地址
         final String spec = "http://educiot.com:32070/wxw/eva/submitstudentevaluateteacher";
@@ -45,7 +45,7 @@ public class SubmitPJData {
 //            outputStreamWriter.flush();
 //        }
 
-        log.warn("正在获取评教列表");
+        log.warn("正在提交评教数据");
         //如果HTTP状态码返回200,则输出获取到的数据
         if (httpURLConnection.getResponseCode() == 200) {
             try (BufferedReader reader = new BufferedReader(
@@ -57,11 +57,10 @@ public class SubmitPJData {
                     resultBuffer.append(tempLine);
                 }
 
-                str = resultBuffer.toString();
+                log.warn(resultBuffer.toString());
 
             }
+            log.warn("已成功提交数据，请登录客户端查看是否评教成功！");
         }
-        log.warn("已成功获取评教列表");
-        return str;
     }
 }
