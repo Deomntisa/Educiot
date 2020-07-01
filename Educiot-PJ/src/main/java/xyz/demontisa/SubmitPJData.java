@@ -60,7 +60,12 @@ public class SubmitPJData {
                 log.warn(resultBuffer.toString());
 
             }
+
             log.warn("已成功提交数据，请登录客户端查看是否评教成功！");
+
+        }else {
+
+            log.error("提交失败,HTTP状态码：" + httpURLConnection.getResponseCode());
         }
     }
 }
