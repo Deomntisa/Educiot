@@ -31,8 +31,10 @@ public class Educiot {
         getPJJsonDid.getPJDid(pjJson);
 
         //获取提交评教结果postData
-        educiotPostData.getPostData(getUserRid.GetAllUserRid(userListJson),getPJJsonDid.getPJDid(pjJson));
+        String postData = educiotPostData.getPostData(getUserRid.GetAllUserRid(userListJson),getPJJsonDid.getPJDid(pjJson));
 
+        //提交评教数据
+        new SubmitPJData().submit(postData);
 
     }
 

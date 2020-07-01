@@ -30,7 +30,7 @@ public class EduciotPostData {
 
         log.warn("已成功拼接postData " + postData);
 
-        JsonObject jsonObject = new Gson().fromJson(postData,JsonObject.class);
+//        JsonObject jsonObject = new Gson().fromJson(postData,JsonObject.class);
 
         return postData;
     }
