@@ -59,8 +59,9 @@ public class EduciotPJList {
                 str = resultBuffer.toString();
 
             }
+            log.warn("已成功获取评教列表");
         }
-        log.warn("已成功获取评教列表");
+
         return str;
     }
 }

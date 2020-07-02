@@ -52,27 +52,28 @@ public class GetPJJsonDid {
 
             JsonObject array1 = array.get((i)).getAsJsonObject();
 
-            log.warn("已获取到第" + (i + 1) + "个项目的JSON数据" + array1);
+//            log.warn("已获取到第" + (i + 1) + "个项目的JSON数据" + array1);
+            log.warn("已获取到第" + (i + 1) + "个项目的JSON数据");
 
             JsonArray array2 = array1.get("data").getAsJsonArray();
 
-            log.warn("正在解析JsonArray数据转换为JsonObject" + array2);
+//            log.warn("正在解析JsonArray数据转换为JsonObject" + array2);
 
             log.warn("此项目总共有" + array2.size() + "个分段");
 
             JsonObject array3 = array2.get((0)).getAsJsonObject();
 
-            log.warn("已成功转换为JsonObject" + array3);
+//            log.warn("已成功转换为JsonObject" + array3);
 
             log.warn("正在获取data数据");
 
             JsonArray array4 = array3.get("data").getAsJsonArray();
 
-            log.warn("已成功获取data数据" + array4);
+//            log.warn("已成功获取data数据" + array4);
 
             JsonObject array5 = array4.get((0)).getAsJsonObject();
 
-            log.warn("已成功获取最高分段的JSON数据" + array5);
+//            log.warn("已成功获取最高分段的JSON数据" + array5);
 
             log.warn("正在获取did");
 

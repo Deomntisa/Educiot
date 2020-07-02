@@ -23,7 +23,7 @@ public class SubmitPJData {
         HttpURLConnection httpURLConnection = (HttpURLConnection) connection;
 
 
-        log.warn("正在设置HTTP请求头");
+//        log.warn("正在设置HTTP请求头");
         //设置请求头
         httpURLConnection.setRequestProperty("Accept-Encoding", "gzip, deflate");
         httpURLConnection.setRequestProperty("Connection", "close");

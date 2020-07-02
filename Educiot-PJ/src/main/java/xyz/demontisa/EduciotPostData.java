@@ -28,7 +28,8 @@ public class EduciotPostData {
         }
         postData += "]";
 
-        log.warn("已成功拼接postData " + postData);
+//        log.warn("已成功拼接postData " + postData);
+        log.warn("已成功拼接postData");
 
 //        JsonObject jsonObject = new Gson().fromJson(postData,JsonObject.class);
 

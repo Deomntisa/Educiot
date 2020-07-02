@@ -28,7 +28,7 @@ public class Educiot {
         new GetPJContent().getPJContent(pjJson);
 
         //获取评教最高分段did
-        getPJJsonDid.getPJDid(pjJson);
+//        getPJJsonDid.getPJDid(pjJson);
 
         //获取提交评教结果postData
         String postData = educiotPostData.getPostData(getUserRid.GetAllUserRid(userListJson),getPJJsonDid.getPJDid(pjJson));
