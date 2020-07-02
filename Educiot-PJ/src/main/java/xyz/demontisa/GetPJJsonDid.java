@@ -17,7 +17,8 @@ public class GetPJJsonDid {
         JsonObject json = (JsonObject) parser.parse(pjJson);
         JsonArray array = json.get("data").getAsJsonArray();
 
-        log.warn("已获取到所有评教JSON" + array);
+//        log.warn("已获取到所有评教JSON" + array);
+        log.warn("已获取到所有评教JSON");
 
 //        JsonObject array1 = array.get((0)).getAsJsonObject();
 //

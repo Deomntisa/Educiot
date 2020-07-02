@@ -13,18 +13,18 @@ public class GetRelationId {
 
     public String getNewRelationId(String fdEduciotPJListReturnJson){
 
-        log.warn("正在获取JsonArray中的data数据");
+        log.info("正在获取JsonArray中的data数据");
         //获取JsonArray中的data数据
         JsonObject educiotPJJson = new Gson().fromJson(fdEduciotPJListReturnJson,JsonObject.class);
         JsonArray relationId = educiotPJJson.getAsJsonArray("data");
         String newRelationId = relationId.toString();
 
-        log.warn("已成功获取到data数据");
+        log.info("已成功获取到data数据");
 
         JSONArray json = JSONArray.fromObject(newRelationId);
         String newRid = null;
 
-        log.warn("正在遍历relationid");
+        log.info("正在遍历relationid");
 
         for(int i=0;i<1;i++){
 

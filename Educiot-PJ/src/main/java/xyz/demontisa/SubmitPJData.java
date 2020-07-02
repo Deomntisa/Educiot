@@ -45,7 +45,7 @@ public class SubmitPJData {
 //            outputStreamWriter.flush();
 //        }
 
-        log.warn("正在提交评教数据");
+        log.info("正在提交评教数据");
         //如果HTTP状态码返回200,则输出获取到的数据
         if (httpURLConnection.getResponseCode() == 200) {
             try (BufferedReader reader = new BufferedReader(
@@ -61,7 +61,7 @@ public class SubmitPJData {
 
             }
 
-            log.warn("已成功提交数据，请登录客户端查看是否评教成功！");
+            log.info("已成功提交数据，请登录客户端查看是否评教成功！");
 
         }else {
 

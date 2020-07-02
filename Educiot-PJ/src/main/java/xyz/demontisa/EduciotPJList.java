@@ -25,7 +25,7 @@ public class EduciotPJList {
         URLConnection connection = url.openConnection();
         HttpURLConnection httpURLConnection = (HttpURLConnection) connection;
 
-        log.warn("正在设置HTTP请求头");
+//        log.warn("正在设置HTTP请求头");
         //设置请求头
         httpURLConnection.setRequestProperty("Accept-Encoding", "gzip, deflate");
         httpURLConnection.setRequestProperty("Connection", "close");
@@ -44,7 +44,7 @@ public class EduciotPJList {
             outputStreamWriter.flush();
         }
 
-        log.warn("正在获取评教列表");
+        log.info("正在获取评教列表");
         //如果HTTP状态码返回200,则输出获取到的数据
         if (httpURLConnection.getResponseCode() == 200) {
             try (BufferedReader reader = new BufferedReader(
@@ -59,7 +59,7 @@ public class EduciotPJList {
                 str = resultBuffer.toString();
 
             }
-            log.warn("已成功获取评教列表");
+            log.info("已成功获取评教列表");
         }
 
         return str;

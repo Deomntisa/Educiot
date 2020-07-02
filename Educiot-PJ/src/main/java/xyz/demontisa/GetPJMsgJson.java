@@ -25,7 +25,7 @@ public class GetPJMsgJson {
         URLConnection connection = url.openConnection();
         HttpURLConnection httpURLConnection = (HttpURLConnection) connection;
 
-        log.warn("正在设置HTTP请求头");
+//        log.warn("正在设置HTTP请求头");
         //设置请求头
         httpURLConnection.setRequestProperty("Accept-Encoding", "gzip, deflate");
         httpURLConnection.setRequestProperty("Connection", "close");
@@ -38,7 +38,7 @@ public class GetPJMsgJson {
         httpURLConnection.setRequestProperty("FDtoken", fdtoken);
         httpURLConnection.setDoOutput(true);
 
-        log.warn("正在拼接所有用户rid");
+        log.info("正在拼接所有用户rid");
         //拼接所有用户rid
         String newUserRid = "";
         for (int i = 0; i < rid.length; i++){
@@ -52,7 +52,7 @@ public class GetPJMsgJson {
             }
         }
 
-        log.warn("正在获取评教信息JSON");
+        log.info("正在获取评教信息JSON");
         try (OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
                 httpURLConnection.getOutputStream())) {
             outputStreamWriter.write("ids=" + newUserRid + "&tid=" + tid);
@@ -73,7 +73,7 @@ public class GetPJMsgJson {
 
             }
         }
-        log.warn("已成功获取评教信息JSON");
+        log.info("已成功获取评教信息JSON");
         return str;
     }
 }
