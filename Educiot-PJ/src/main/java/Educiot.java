@@ -27,7 +27,7 @@ public class Educiot {
         //获取评教内容
         new GetPJContent().getPJContent(pjJson);
 
-        //获取评教最高分段did
+        //获取评教最高分段did数组
         Long[] did = getPJJsonDid.getPJDid(pjJson);
 
         //获取提交评教结果postData
