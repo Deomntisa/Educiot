@@ -63,7 +63,7 @@ public class Login {
             try (BufferedReader reader = new BufferedReader(
                     new InputStreamReader(
                             httpURLConnection.getInputStream()))) {
-                String tempLine = null;
+                String tempLine;
                 StringBuilder resultBuffer = new StringBuilder();
                 while ((tempLine = reader.readLine()) != null) {
                     resultBuffer.append(tempLine);

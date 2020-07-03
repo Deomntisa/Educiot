@@ -15,13 +15,15 @@ public class GetUserRid {
 
     public String[] GetAllUserRid(String userListJson){
 
-        log.warn("正在获取JsonArray中的data2数据");
+        log.debug(userListJson);
+
+        log.warn("正在获取JsonArray中的data1数据");
         //获取JsonArray中的data2数据
         JsonObject educiotPJJson = new Gson().fromJson(userListJson,JsonObject.class);
-        JsonArray relationId = educiotPJJson.getAsJsonArray("data2");
+        JsonArray relationId = educiotPJJson.getAsJsonArray("data1");
         String newRelationId = relationId.toString();
 
-        log.warn("已成功获取到data2数据");
+        log.warn("已成功获取到data1数据");
 
         JSONArray json = JSONArray.fromObject(newRelationId);
         //声明存放rid的动态数组

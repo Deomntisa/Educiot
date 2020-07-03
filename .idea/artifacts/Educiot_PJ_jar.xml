@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Educiot_PJ_jar</output-path>
     <root id="archive" name="Educiot-PJ.jar">
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/Educiot-PJ/src/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/Educiot-PJ/src/main/resources/META-INF/MANIFEST.MF" />
       </element>
       <element id="module-output" name="Educiot-PJ" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.12/httpclient-4.5.12.jar" path-in-jar="/" />

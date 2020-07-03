@@ -9,12 +9,15 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Arrays;
 
 public class GetPJMsgJson {
 
     private static final Logger log = Logger.getLogger(GetPJMsgJson.class);
 
     public static String getPJJson(String fdtoken, String[] rid, String tid) throws IOException {
+
+        log.debug(Arrays.toString(rid));
 
         //接口地址
         final String spec = "http://educiot.com:32070/wxw/eva/tostudentevaluate";
@@ -32,7 +35,7 @@ public class GetPJMsgJson {
         httpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
         httpURLConnection.setRequestProperty("Accept", "*/*");
         httpURLConnection.setRequestProperty("Host", "educiot.com:32070");
-        httpURLConnection.setRequestProperty("User-Agent", "yu lian wang/2.3.5 (iPhone; iOS 13.5; Scale/2.00)");
+        httpURLConnection.setRequestProperty("User-Agent", "yu lian wang/2.3.7 (iPhone; iOS 13.5; Scale/2.00)");
         httpURLConnection.setRequestProperty("Content-Length", "14");
         httpURLConnection.setRequestProperty("Accept-Language", "zh-Hans-HK;q=1, en-HK;q=0.9");
         httpURLConnection.setRequestProperty("FDtoken", fdtoken);

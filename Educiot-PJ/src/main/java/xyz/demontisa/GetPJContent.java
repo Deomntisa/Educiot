@@ -19,7 +19,7 @@ public class GetPJContent {
 
         //获取JsonArray中的data数据
         log.warn("正在获取JsonArray中的data数据");
-
+        log.debug(pjJson);
         JsonObject educiotPJContent = new Gson().fromJson(pjJson,JsonObject.class);
         JsonArray educiotPJContentAsJsonArray = educiotPJContent.getAsJsonArray("data");
 
